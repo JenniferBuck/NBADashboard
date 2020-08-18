@@ -88,3 +88,29 @@ $.ajax({
        }    
   
     });
+
+
+    //Getting the teams
+    var gamesURL = "https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=4387"
+  console.log(gamesURL);
+  
+  $.ajax({
+       url: gamesURL,
+       method: "GET"
+     }).then(function(response) {
+
+        for (var i = 0; i < response.teams.length; i++){
+            console.log(response.teams[i].strTeam);
+
+            var team = response.teams[i].strTeam;
+            var teamCard = $('<div>');
+            teamCard.addClass('card');
+            $(teamCard).append(team);
+            $('#teams').append(teamCard);            
+        }
+        
+
+                
+
+     })
+
